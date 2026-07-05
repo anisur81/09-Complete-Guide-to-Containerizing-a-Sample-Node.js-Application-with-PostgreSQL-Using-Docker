@@ -68,6 +68,7 @@ CMD ["node", "dist/server.js"]
 
 # Create a .dockerignore file to exclude unnecessary files:
 
+```
 node_modules
 npm-debug.log
 .git
@@ -80,6 +81,7 @@ coverage
 .vscode
 .idea
 *.log
+```
 
 Note: This setup ensures your Node.js application is Dockerized efficiently with optimal security, caching, and performance.
 
