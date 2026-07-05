@@ -66,6 +66,20 @@ CMD ["node", "dist/server.js"]
 ✅ **Clean Cache**: Remove unnecessary files to reduce image size  
 ✅ **Explicit CMD**: Use `CMD` for default command, not `ENTRYPOINT`
 
+# Create a .dockerignore file to exclude unnecessary files:
 
+node_modules
+npm-debug.log
+.git
+.env
+.DS_Store
+README.md
+.gitignore
+.nyc_output
+coverage
+.vscode
+.idea
+*.log
 
+Note: This setup ensures your Node.js application is Dockerized efficiently with optimal security, caching, and performance.
 
