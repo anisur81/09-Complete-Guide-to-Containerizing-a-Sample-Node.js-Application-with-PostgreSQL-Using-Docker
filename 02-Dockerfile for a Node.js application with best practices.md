@@ -1,3 +1,6 @@
+## Production-Ready Multi-Stage Dockerfile
+
+```dockerfile
 # Stage 1: Build stage
 FROM node:18-alpine AS builder
 
@@ -44,6 +47,7 @@ EXPOSE 3000
 
 # Define the startup command
 CMD ["node", "dist/server.js"]
+```
 
 
 
