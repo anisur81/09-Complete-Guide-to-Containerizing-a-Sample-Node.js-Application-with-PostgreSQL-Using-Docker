@@ -3,24 +3,7 @@
 ## Production-Ready Multi-Stage Dockerfile
 
 ```dockerfile
-# Stage 1: Build stage
-FROM node:18-alpine AS builder
 
-WORKDIR /usr/src/app
-
-# Copy package files
-COPY package*.json ./
-
-# Install all dependencies (including dev dependencies)
-RUN npm ci
-
-# Copy source code
-COPY . .
-
-# Build the application
-RUN npm run build
-
-# Stage 2: Production stage
 FROM node:18-alpine
 
 WORKDIR /usr/src/app
@@ -28,27 +11,25 @@ WORKDIR /usr/src/app
 # Copy package files
 COPY package*.json ./
 
-# Install only production dependencies
-RUN npm ci --only=production
+# Install production dependencies
+RUN npm ci --omit=dev
 
-# Copy built application from builder stage
-COPY --from=builder /usr/src/app/dist ./dist
-COPY --from=builder /usr/src/app/node_modules ./node_modules
+# Copy application source
+COPY . .
 
-# Create non-root user for security
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nodejs -u 1001
+# Create non-root user
+RUN addgroup -S nodejs && \
+    adduser -S nodeuser -G nodejs
 
-# Change ownership to non-root user
-COPY --chown=nodejs:nodejs . .
+# Set ownership
+RUN chown -R nodeuser:nodejs /usr/src/app
 
-USER nodejs
+USER nodeuser
 
-# Expose the application port
 EXPOSE 3000
 
-# Define the startup command
-CMD ["node", "dist/server.js"]
+CMD ["node", "app.js"]
+
 ```
 
 
