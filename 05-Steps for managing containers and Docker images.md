@@ -2,7 +2,7 @@
 
 ---
 
-**9. Manage the Container**
+##. Manage the Container**
 
 - Stop the container.
 
@@ -48,4 +48,17 @@ docker image prune
 
 ```
 docker rmi your-app-name:v1.0.0
+```
+
+##. Verify the container is running
+```
+
+sudo docker ps
+For all container
+
+sudo docker ps -a
+```
+## 8. View application logs
+```
+sudo docker logs -f portfolio-nodejs
 ```
