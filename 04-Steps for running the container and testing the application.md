@@ -9,6 +9,19 @@
 
 ```
 docker run -d -p 8080:80 --name my-app-container your-app-name:v1.0.0
+
+or
+
+  sudo docker run -d \
+  --name portfolio-nodejs \
+  -p 3000:3000 \
+  -e DB_HOST=172.18.0.17 \
+  -e DB_PORT=5432 \
+  -e DB_NAME=mydb \
+  -e DB_USER=postgres \
+  -e DB_PASSWORD=postgres \
+  portfolio-nodejs:v1
+
 ```
 
 ---
