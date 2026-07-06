@@ -2,7 +2,7 @@
 
 ---
 
-**12. Configure Environment Variables**
+** Configure Environment Variables**
 
 - Set environment variables directly in the run command for database connection details, API keys, JWT secrets, or application environment (development, production).
 
